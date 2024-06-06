@@ -1,0 +1,20 @@
+{
+  "name": "magicalmirai2024",
+  "version": "1.0.0",
+  "description": "Hatsune Miku Magical Mirai 2024 Programming Contest Entry",
+  "scripts": {
+    "build-dev": "parcel src/index.html --dist-dir dev",
+    "build": "parcel build src/index.html --public-url ./ --dist-dir docs --no-source-maps",
+    "clean": "del-cli .parcel-cache dev docs",
+    "prebuild": "del-cli docs && cd src/assets && copyfiles ./**/* ../../docs"
+  },
+  "author": "Junferno",
+  "license": "MIT",
+  "dependencies": {
+    "textalive-app-api": "^0.4.0"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.12.0"
+  }
+}
