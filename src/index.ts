@@ -532,7 +532,7 @@ document.querySelector("a#jp")!.addEventListener("click", (e) => {
   document.querySelector("#control > #play > a")!.textContent = "再生";
   document.querySelector("#control > #pause > a")!.textContent = "一時停止";
   document.querySelector("#control > #stop > a")!.textContent = "停止";
-  document.querySelector("#instructions")!.textContent = "左で楽曲を選んでください";
+  document.querySelector("#instructions")!.textContent = "左側で楽曲を選んでください";
   document.querySelector("#loading")!.textContent = "ちょっとまって．．．";
 })
 
