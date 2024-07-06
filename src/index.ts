@@ -23,6 +23,22 @@ let phraseCount = 0;
 let songQueued = -1;
 let isPaused = false;
 
+const images : HTMLImageElement[] = [
+  document.querySelector("#static-leek1")!,
+  document.querySelector("#static-leek2")!,
+  document.querySelector("#static-leek3")!
+];
+let imageIndex = 0;
+let citationNumber = 1;
+
+const title = document.querySelector("#title")!;
+const box = document.querySelector("#box")!;
+const boxTitle = document.querySelector("#box-title")!;
+const boxImage : HTMLImageElement = document.querySelector("#box-image")!;
+const artist = document.querySelector("#artist")!;
+
+let newBeat = false;
+
 function playQueuedSong() {
   if (songQueued === 1) {
     // SUPERHERO / めろくる
@@ -163,9 +179,9 @@ player.addListener({
     },
 
     onVideoReady(video) {
-      document.querySelector("#title")!.textContent = "";
-      document.querySelector("#box-title")!.textContent = player.data.song.name;
-      document.querySelector("#artist")!.textContent = player.data.song.name + " / " + player.data.song.artist.name;
+      title.textContent = "";
+      boxTitle.textContent = player.data.song.name;
+      artist.textContent = player.data.song.name + " / " + player.data.song.artist.name;
       resetChars();
     },
 
@@ -177,11 +193,17 @@ player.addListener({
     onTimeUpdate(position : number) {
       let beat = player.findBeat(position);
       if (b !== beat) {
-        if (beat) {
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-            });
-          });
+        if (beat && textContainer.children.length > 0) {
+          const lastChild = textContainer.children[textContainer.children.length-1];
+          console.log(lastChild)
+          if (!lastChild.classList.contains("line-break") ||
+            lastChild.tagName === "SUP"
+          ) {
+            let citation = document.createElement("sup");
+            citation.textContent = "[" + citationNumber + "]"
+            citationNumber++;
+            textContainer.appendChild(citation);
+          }
         }
         b = beat;
       }
@@ -205,10 +227,12 @@ player.addListener({
           }
         }
         if (chorus) {
-          document.querySelector("#box")!.className = "";
+          box.className = "";
+          boxImage.src = images[imageIndex].src;
+          imageIndex = (imageIndex + 1) % images.length;
         }
         else {
-          document.querySelector("#box")!.className = "hidden";
+          box.className = "hidden";
         }
         seg = chorus;
       }
@@ -264,13 +288,14 @@ player.addListener({
 function endSong()
 {
   resetChars();
-  document.querySelector("#box")!.className = "hidden";
+  box.className = "hidden";
   c = null;
   b = null;
   ch = null;
   seg = null;
   isFirstNoun = true;
   phraseCount = 0;
+  imageIndex = 0;
 }
 
 function newChar(current)
@@ -320,7 +345,7 @@ function newChar(current)
       resetChars();
     }
 
-    document.querySelector("#title")!.textContent = phrase;
+    title.textContent = phrase;
   }
 
   // First character in word
@@ -435,6 +460,10 @@ function newChar(current)
     const popup = document.createElement("div");
     popup.className = "popup";
     popup.textContent = longWord;
+    let popupImage = document.createElement("img");
+    popupImage.src = images[imageIndex].src;
+    imageIndex = (imageIndex + 1) % images.length;
+    popup.appendChild(popupImage);
     popupWrapper.appendChild(popup);
   }
   else {
@@ -491,7 +520,7 @@ function newChar(current)
 }
 
 function resetChars() {
-  document.querySelector("#title")!.textContent = "";
+  title.textContent = "";
   isFirstNoun = true;
   phraseCount = 0;
   while (textContainer.firstChild) {

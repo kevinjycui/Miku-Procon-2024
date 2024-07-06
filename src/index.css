@@ -261,6 +261,11 @@ a:hover {
         margin: 0;
       }
 
+      sup {
+        font-size: 12pt;
+        color: var(--color-hyperlink);
+      }
+
       .first-noun {
         font-weight: bold;
 
@@ -294,6 +299,10 @@ a:hover {
           padding: 1rem;
           background-color: white;
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+          img {
+            width: 10rem;
+          }
         }
 
         .popup:before {
@@ -330,9 +339,10 @@ a:hover {
         
         ~.popup-wrapper .popup {
           display: block;
-          animation: fadeIn ease 0.4s;
+          /* animation: fadeIn ease 0.4s;
           animation-iteration-count: 1;
-          animation-fill-mode: forwards;
+          animation-fill-mode: forwards; */
+          z-index: 900;
         }
       }
 
@@ -369,6 +379,7 @@ a:hover {
 
     #box {
       display: flex;
+      flex-direction: column;
       float: right;
       width: 20%;
       margin: 0 2rem;
@@ -388,6 +399,12 @@ a:hover {
       animation-fill-mode: forwards;
     }
 
+    #box-image {
+      margin: auto;
+      width: 95%;
+      height: auto;
+    }
+
     .left {
       float: left;
     }
@@ -399,4 +416,8 @@ a:hover {
   position: absolute;
   bottom: 4px;
   right: 4px;
+}
+
+#license {
+  z-index: -1;
 }
