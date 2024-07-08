@@ -26,7 +26,9 @@ let isPaused = false;
 const images : HTMLImageElement[] = [
   document.querySelector("#static-leek1")!,
   document.querySelector("#static-leek2")!,
-  document.querySelector("#static-leek3")!
+  document.querySelector("#static-leek3")!,
+  document.querySelector("#static-leek4")!,
+  document.querySelector("#static-leek5")!
 ];
 let imageIndex = 0;
 let citationNumber = 1;
