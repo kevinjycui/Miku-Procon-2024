@@ -29,12 +29,10 @@ Afterwards, select a song from the left
 
 ![](github/screenshot1.png)
 
-
 ## イメージ Images
 使ったイメージの全部は自分が作ったイメージとか、ウィキペディアで探したCC0ライセンスのイメージだ。
 
 All images are made by myself or CC0 licensed images found on Wikipedia.
-
 
 ![](github/screenshot2.png)
 
