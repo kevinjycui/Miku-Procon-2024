@@ -2,6 +2,9 @@
 
 ## 使い方　Usage
 ```
+git clone git@github.com:kevinjycui/Miku-Procon-2024.git
+cd Miku-Procon-2024
+npm i
 npm run build-dev
 ```
 
