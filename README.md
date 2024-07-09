@@ -5,7 +5,7 @@
 npm run build-dev
 ```
 
-そして、リンクを開く（例えば、http://localhost:1234 とか http://localhost:56409）
+そして、リンクを開く（例えば、http://localhost:1234 とか http://localhost:56409 ）
 
 Then, open the link (e.g. http://localhost:1234 or http://localhost:56409)
 ```
