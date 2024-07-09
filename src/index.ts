@@ -24,11 +24,14 @@ let songQueued = -1;
 let isPaused = false;
 
 const images : HTMLImageElement[] = [
-  document.querySelector("#static-leek1")!,
   document.querySelector("#static-leek2")!,
-  document.querySelector("#static-leek3")!,
   document.querySelector("#static-leek4")!,
-  document.querySelector("#static-leek5")!
+  document.querySelector("#static-leek6")!,
+  document.querySelector("#static-leek8")!,
+  document.querySelector("#static-leek1")!,
+  document.querySelector("#static-leek3")!,
+  document.querySelector("#static-leek5")!,
+  document.querySelector("#static-leek7")!,
 ];
 let imageIndex = 0;
 let citationNumber = 1;
@@ -38,6 +41,7 @@ const box = document.querySelector("#box")!;
 const boxTitle = document.querySelector("#box-title")!;
 const boxImage : HTMLImageElement = document.querySelector("#box-image")!;
 const artist = document.querySelector("#artist")!;
+const backingImage = document.querySelector("#backing-image")!;
 
 let newBeat = false;
 
@@ -250,6 +254,10 @@ player.addListener({
           endSong();
         }
       }
+      else if (position >= player.data.song.length * 1000 - 500)
+      {
+        endSong();
+      }
       
       let current = c || player.video.firstChar;
 
@@ -265,11 +273,13 @@ player.addListener({
     },
 
     onPlay() {
+      endSong()
       document.querySelector("#control > #play")!.className = "hidden";
       document.querySelector("#control > #pause")!.className = "";
       document.querySelector("#control > #stop")!.className = "";
       isPaused = false;
       document.querySelector("#loading")!.className = "hidden";
+      backingImage.className = "";
     },
 
     onPause() {
@@ -298,6 +308,8 @@ function endSong()
   isFirstNoun = true;
   phraseCount = 0;
   imageIndex = 0;
+  citationNumber = 1;
+  backingImage.className = "hidden";
 }
 
 function newChar(current)
@@ -377,7 +389,7 @@ function newChar(current)
         next = next.next;
       }
   
-      if (charCount >= 2 && lastChar.endTime - firstChar.startTime >= 650) {
+      if (charCount >= 2 && lastChar.endTime - firstChar.startTime >= 350) {
         if (isFirstNoun) {
           classes.push("first-noun");
           isFirstNoun = false;
@@ -418,7 +430,6 @@ function newChar(current)
     if (current.parent.language === "ja") {
       classes.push("japanese");
     }
-  
   }
 
   // Last character in word
@@ -564,7 +575,7 @@ document.querySelector("a#jp")!.addEventListener("click", (e) => {
   document.querySelector("#control > #pause > a")!.textContent = "一時停止";
   document.querySelector("#control > #stop > a")!.textContent = "停止";
   document.querySelector("#instructions")!.textContent = "左側で楽曲を選んでください";
-  document.querySelector("#loading")!.textContent = "ちょっとまって．．．";
+  document.querySelector("#loading")!.textContent = "ちょっと待ってください．．．";
 })
 
 document.querySelector("a#en")!.addEventListener("click", (e) => {
