@@ -5,17 +5,16 @@
 npm run build-dev
 ```
 
-そして、リンクを開く（例えば、http://localhost:1234 とか http://localhost:56409 ）
+そして、リンクを開く（例えば、http://localhost:1234 ）
 
-Then, open the link (e.g. http://localhost:1234 or http://localhost:56409)
+Then, open the link (e.g. http://localhost:1234)
 ```
 $ npm run build-dev
 
-> magicalmirai2024@1.0.0 build-dev C:\Users\kevin\Documents\MagicalMirai2024
+> magicalmirai2024@1.0.0 build-dev C:\Users\miku\Miku-Procon-2024
 > parcel src/index.html --dist-dir dev
 
-Port "1234" could not be used
-Server running at http://localhost:56409
+Server running at http://localhost:1234
 Building...
 Bundling...
 √ Built in 428ms
